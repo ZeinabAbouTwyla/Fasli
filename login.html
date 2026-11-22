@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-ar="دخول الطالب — فصلي" data-en="Student Login — Fasli">دخول الطالب — فصلي</title>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="login" data-active="login">
+<header id="site-header" class="site-header"></header>
+<main class="wrap auth-wrap">
+  <form class="auth-card" id="login-form" novalidate>
+    <h1 data-i18n="login.title"></h1>
+    <p class="sub" data-i18n="login.sub"></p>
+    <div class="alert" id="login-alert" style="display:none"></div>
+    <div class="field">
+      <label for="student-name" data-i18n="login.name"></label>
+      <input id="student-name" type="text" autocomplete="name" data-i18n-ph="login.name.ph">
+    </div>
+    <div class="field">
+      <label for="grade-select" data-i18n="login.grade"></label>
+      <select id="grade-select"></select>
+    </div>
+    <button class="btn btn-primary" type="submit" data-i18n="login.btn"></button>
+  </form>
+</main>
+<footer id="site-footer" class="site-footer"></footer>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

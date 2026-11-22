@@ -1,0 +1,161 @@
+/* فصلي — منصة الطالب | Fasli student platform — classroom notebook design */
+:root{
+  --paper:#fbf4e4; --paper2:#f4ead2; --card:#fffdf7; --ink:#1d3550; --ink-soft:#44586e;
+  --navy:#16324f; --red:#d64545; --mustard:#f0a832; --sky:#4f7fb8; --line:#e4d6b8;
+  --shadow:0 10px 30px rgba(29,53,80,.10); --radius:18px;
+  --font-head:'El Messiri',serif; --font-body:'Tajawal',sans-serif;
+}
+[data-theme=dark]{
+  --paper:#122336; --paper2:#0e1d2c; --card:#18304a; --ink:#f2e9d8; --ink-soft:#b9c6d4;
+  --navy:#0b1a29; --red:#ff7b6b; --mustard:#f6c460; --sky:#7fb0e6; --line:#2a4763;
+  --shadow:0 12px 34px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font-body);background:var(--paper);color:var(--ink);line-height:1.75;transition:background .3s,color .3s}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.5;
+  background-image:radial-gradient(rgba(29,53,80,.05) 1px,transparent 1px);background-size:26px 26px}
+[data-theme=dark] body::before{background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px)}
+h1,h2,h3,h4{font-family:var(--font-head);line-height:1.4;margin:0 0 .4em}
+a{color:var(--sky);text-decoration:none}
+img{max-width:100%;height:auto;display:block}
+.wrap{width:min(1120px,92%);margin-inline:auto}
+.skip{position:absolute;inset-inline-start:-999px}
+
+/* شريط توضيحي */
+.demo-ribbon{background:var(--navy);color:#f7e9c8;font-size:.82rem;text-align:center;padding:.35rem .8rem;position:relative;z-index:5}
+[data-theme=dark] .demo-ribbon{background:#08141f}
+
+/* الترويسة */
+.site-header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:2px dashed var(--line)}
+.header-in{display:flex;align-items:center;gap:1rem;padding:.7rem 0}
+.brand{display:flex;align-items:center;gap:.6rem;font-family:var(--font-head);font-weight:700;font-size:1.35rem;color:var(--ink)}
+.brand .mark{width:40px;height:40px;border-radius:12px;background:var(--red);display:grid;place-items:center;color:#fff;font-size:1.2rem;box-shadow:var(--shadow)}
+.brand small{display:block;font-family:var(--font-body);font-weight:400;font-size:.72rem;color:var(--ink-soft)}
+.main-nav{display:flex;gap:1.2rem;margin-inline-start:auto;align-items:center}
+.main-nav a{color:var(--ink);font-weight:500;padding:.25rem .2rem;border-bottom:2px solid transparent}
+.main-nav a[aria-current],.main-nav a:hover{border-color:var(--red);color:var(--red)}
+.header-tools{display:flex;gap:.5rem;align-items:center}
+.icon-btn,.lang-btn{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;padding:.35rem .6rem;font-family:var(--font-body);font-size:.85rem;cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+.icon-btn:hover,.lang-btn:hover{border-color:var(--red)}
+.burger{display:none}
+@media (max-width:840px){
+  .burger{display:inline-flex;margin-inline-start:auto}
+  .main-nav{display:none;position:absolute;top:100%;inset-inline:0;background:var(--card);flex-direction:column;align-items:stretch;padding:1rem 5%;gap:.4rem;border-bottom:2px dashed var(--line)}
+  body.nav-open .main-nav{display:flex}
+}
+
+/* البطل */
+:root{--hero-scrim:linear-gradient(to left,rgba(251,244,228,.96) 16%,rgba(251,244,228,.74) 46%,rgba(251,244,228,.26) 80%)}
+html[dir=ltr]{--hero-scrim:linear-gradient(to right,rgba(251,244,228,.96) 16%,rgba(251,244,228,.74) 46%,rgba(251,244,228,.26) 80%)}
+html[data-theme=dark]{--hero-scrim:linear-gradient(to left,rgba(18,35,54,.96) 16%,rgba(18,35,54,.78) 46%,rgba(18,35,54,.34) 80%)}
+html[data-theme=dark][dir=ltr]{--hero-scrim:linear-gradient(to right,rgba(18,35,54,.96) 16%,rgba(18,35,54,.78) 46%,rgba(18,35,54,.34) 80%)}
+@media (max-width:700px){
+  :root,html[dir=ltr]{--hero-scrim:linear-gradient(rgba(251,244,228,.92),rgba(251,244,228,.84))}
+  html[data-theme=dark],html[data-theme=dark][dir=ltr]{--hero-scrim:linear-gradient(rgba(18,35,54,.92),rgba(18,35,54,.85))}
+}
+.hero{position:relative;overflow:hidden;display:flex;align-items:center;min-height:clamp(400px,62vh,580px);
+  background-image:var(--hero-scrim),url('../img/hero.jpg');background-size:cover,cover;background-position:center,center 34%;background-repeat:no-repeat}
+.hero-inner{max-width:640px;padding:3.6rem 0}
+.hero .kicker{color:var(--red);font-weight:700;font-size:.9rem}
+.hero h1{font-size:clamp(1.9rem,4.6vw,3.1rem)}
+.hero h1 em{font-style:normal;color:var(--red);position:relative}
+.hero h1 em::after{content:"";position:absolute;inset-inline:0;bottom:.06em;height:.28em;background:color-mix(in srgb,var(--mustard) 55%,transparent);z-index:-1;border-radius:3px}
+.hero p.lead{color:var(--ink-soft);font-size:1.06rem;max-width:52ch}
+.cta-row{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.3rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;border-radius:14px;padding:.7rem 1.4rem;font-family:var(--font-body);font-weight:700;font-size:1rem;border:2px solid transparent;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--red);color:#fff;box-shadow:0 6px 0 #a83232}
+[data-theme=dark] .btn-primary{box-shadow:0 6px 0 #8f2b22}
+.btn-primary:active{transform:translateY(2px);box-shadow:0 2px 0 #a83232}
+.btn-ghost{background:var(--card);color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--sky)}
+
+/* أقسام */
+.section{padding:2.6rem 0}
+.section-head{max-width:60ch;margin-bottom:1.6rem}
+.section-head .kicker{color:var(--red);font-weight:700;font-size:.85rem}
+.section-head h2{font-size:clamp(1.5rem,3vw,2.1rem)}
+.section-head p{color:var(--ink-soft)}
+
+/* بطاقات المراحل والصفوف */
+.grade-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1.1rem}
+.grade-card{background:var(--card);border:2px solid var(--line);border-radius:var(--radius);padding:1.2rem 1.1rem;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:transform .15s,border-color .15s;color:var(--ink)}
+.grade-card:hover{transform:translateY(-4px) rotate(-.4deg);border-color:var(--mustard)}
+.grade-card .stage{font-size:.78rem;color:var(--sky);font-weight:700}
+.grade-card h3{font-size:1.25rem;margin:.15rem 0 .3rem}
+.grade-card p{font-size:.85rem;color:var(--ink-soft);margin:0 0 .7rem}
+.grade-card .go{font-weight:700;color:var(--red);font-size:.9rem}
+.grade-card::after{content:"";position:absolute;inset-inline-end:-26px;bottom:-26px;width:90px;height:90px;border-radius:50%;background:color-mix(in srgb,var(--mustard) 22%,transparent)}
+
+/* بطاقات المواد والدروس */
+.subject-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.1rem}
+.subject-card{background:var(--card);border:2px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);color:var(--ink);transition:transform .15s}
+.subject-card:hover{transform:translateY(-4px)}
+.subject-card .thumb{aspect-ratio:16/9;object-fit:cover;width:100%}
+.subject-card .body{padding:1rem 1.1rem 1.2rem}
+.subject-card h3{font-size:1.15rem;margin:0 0 .25rem}
+.subject-card .meta{font-size:.82rem;color:var(--ink-soft);display:flex;gap:.9rem;flex-wrap:wrap}
+.progress{height:8px;border-radius:99px;background:var(--paper2);margin-top:.7rem;overflow:hidden}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--mustard),var(--red));border-radius:99px}
+
+.lesson-list{display:grid;gap:.8rem}
+.lesson-row{display:flex;gap:1rem;align-items:center;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:.85rem 1rem;color:var(--ink);transition:border-color .15s}
+.lesson-row:hover{border-color:var(--sky)}
+.lesson-row .num{flex:0 0 44px;height:44px;border-radius:12px;background:var(--paper2);display:grid;place-items:center;font-family:var(--font-head);font-weight:700;color:var(--red)}
+.lesson-row .info h3{font-size:1.02rem;margin:0}
+.lesson-row .info span{font-size:.8rem;color:var(--ink-soft)}
+.lesson-row .badge{margin-inline-start:auto;font-size:.75rem;font-weight:700;padding:.2rem .7rem;border-radius:99px;background:color-mix(in srgb,var(--sky) 16%,transparent);color:var(--sky);white-space:nowrap}
+.lesson-row.done .badge{background:color-mix(in srgb,#3f9d63 18%,transparent);color:#3f9d63}
+
+/* صفحة الدرس */
+.lesson-hero{display:grid;grid-template-columns:1.25fr .75fr;gap:1.6rem;align-items:start}
+@media (max-width:900px){.lesson-hero{grid-template-columns:1fr}}
+.video-shell{border-radius:20px;overflow:hidden;border:3px solid var(--card);box-shadow:var(--shadow);background:#000}
+.video-shell video{width:100%;display:block;aspect-ratio:16/9}
+.note-card{background:var(--card);border:2px dashed var(--line);border-radius:var(--radius);padding:1.2rem 1.3rem}
+.note-card h3{color:var(--red)}
+.note-card ul{margin:.4rem 0;padding-inline-start:1.2rem}
+.note-card li{margin:.3rem 0;font-size:.95rem}
+
+/* تسجيل الدخول */
+.auth-wrap{min-height:70vh;display:grid;place-items:center;padding:3rem 0}
+.auth-card{position:relative;width:min(430px,100%);background:var(--card);border:2px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:2rem 1.8rem;position:relative}
+.auth-card::before{content:"";position:absolute;top:-13px;left:50%;width:120px;height:26px;background:color-mix(in srgb,var(--mustard) 70%,transparent);transform:translateX(-50%) rotate(-2deg);border-radius:3px}
+.auth-card h1{font-size:1.5rem;text-align:center}
+.auth-card .sub{text-align:center;color:var(--ink-soft);font-size:.9rem;margin-bottom:1.2rem}
+.field{margin-bottom:1rem}
+.field label{display:block;font-weight:700;font-size:.88rem;margin-bottom:.3rem}
+.field input,.field select{width:100%;padding:.65rem .8rem;border-radius:12px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:.95rem}
+.field input:focus,.field select:focus{outline:2px solid var(--sky);outline-offset:1px}
+.auth-card .btn{width:100%;justify-content:center;margin-top:.4rem}
+.demo-hint{margin-top:1rem;font-size:.8rem;color:var(--ink-soft);background:var(--paper2);border-radius:12px;padding:.6rem .8rem;text-align:center}
+
+/* ترحيب الطالب */
+.welcome-bar{display:flex;align-items:center;gap:1rem;background:linear-gradient(120deg,color-mix(in srgb,var(--navy) 92%,#000),var(--navy));color:#f7e9c8;border-radius:22px;padding:1.4rem 1.6rem;margin:1.6rem 0;flex-wrap:wrap}
+.welcome-bar h2{margin:0;font-size:1.4rem}
+.welcome-bar p{margin:0;font-size:.9rem;opacity:.85}
+.welcome-bar .spacer{margin-inline-start:auto;display:flex;gap:.6rem;flex-wrap:wrap}
+.chip-btn{border:1.5px solid rgba(247,233,200,.4);background:transparent;color:#f7e9c8;border-radius:12px;padding:.45rem 1rem;font-family:var(--font-body);font-size:.85rem;cursor:pointer}
+.chip-btn:hover{background:rgba(247,233,200,.12)}
+
+/* مميزات */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.feat{background:var(--card);border:2px solid var(--line);border-radius:var(--radius);padding:1.1rem;text-align:center}
+.feat .ico{width:52px;height:52px;margin:0 auto .6rem;border-radius:14px;display:grid;place-items:center;font-size:1.4rem;background:color-mix(in srgb,var(--mustard) 25%,transparent)}
+.feat h3{font-size:1.05rem;margin-bottom:.2rem}
+.feat p{font-size:.85rem;color:var(--ink-soft);margin:0}
+
+/* تنبيه */
+.alert{border-radius:14px;padding:.8rem 1rem;font-size:.9rem;border:1.5px dashed var(--red);color:var(--red);background:color-mix(in srgb,var(--red) 8%,transparent);margin:1rem 0}
+
+/* التذييل */
+.site-footer{margin-top:3rem;border-top:2px dashed var(--line);background:var(--paper2);padding:2rem 0 2.4rem}
+.footer-grid{display:flex;gap:1.4rem;flex-wrap:wrap;align-items:flex-start;justify-content:space-between}
+.site-footer h4{margin:0 0 .4rem;font-size:1rem}
+.site-footer p,.site-footer a{font-size:.85rem;color:var(--ink-soft)}
+.site-footer a:hover{color:var(--red)}
+.made-by{font-size:.85rem;color:var(--ink-soft);margin-top:1.4rem;text-align:center}
+.made-by a{color:var(--red);font-weight:700}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}}
