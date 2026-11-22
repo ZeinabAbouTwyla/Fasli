@@ -3,19 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title data-ar="المادة — فصلي" data-en="Subject — Fasli">المادة — فصلي</title>
+<title data-ar="الصف — فصلي" data-en="Grade — Fasli">الصف — فصلي</title>
+<script>try{var _t=JSON.parse(localStorage.getItem('fasli_theme')||'null')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=_t;var _l=JSON.parse(localStorage.getItem('fasli_lang')||'"ar"');document.documentElement.lang=_l;document.documentElement.dir=_l==='ar'?'rtl':'ltr';}catch(e){}</script>
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-page="class" data-active="grades">
 <header id="site-header" class="site-header"></header>
 <main class="wrap section">
-  <a id="back-link" href="dashboard.html"></a>
+  <a id="back-link" href="index.html#grades"></a>
   <div class="section-head" style="margin-top:1rem">
     <h2 id="class-title"></h2>
     <p id="class-sub"></p>
   </div>
-  <div class="lesson-list" id="lesson-list"></div>
+  <div class="subject-grid" id="subject-grid" style="display:none"></div>
+  <div class="lesson-list" id="lesson-list" style="display:none"></div>
 </main>
 <footer id="site-footer" class="site-footer"></footer>
 <script src="assets/js/data.js"></script>

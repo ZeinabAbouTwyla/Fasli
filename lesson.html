@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title data-ar="الدرس — فصلي" data-en="Lesson — Fasli">الدرس — فصلي</title>
+<script>try{var _t=JSON.parse(localStorage.getItem('fasli_theme')||'null')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=_t;var _l=JSON.parse(localStorage.getItem('fasli_lang')||'"ar"');document.documentElement.lang=_l;document.documentElement.dir=_l==='ar'?'rtl':'ltr';}catch(e){}</script>
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -18,9 +19,13 @@
   <div class="lesson-hero">
     <div>
       <div id="video-wrap"></div>
+      <div class="watch-wrap">
+        <div class="watch-meta"><span id="watch-pct"></span><span id="watch-state"></span></div>
+        <div class="progress watch-bar"><i id="watch-fill"></i></div>
+      </div>
       <div class="cta-row" style="margin-top:1rem">
-        <button class="btn btn-primary" id="mark-btn"></button>
-        <a class="btn btn-ghost" id="next-link" style="display:none"></a>
+        <a class="btn btn-primary" id="next-link" style="display:none"></a>
+        <span class="lock-hint" id="lock-hint" style="display:none"></span>
       </div>
     </div>
     <aside class="note-card">
