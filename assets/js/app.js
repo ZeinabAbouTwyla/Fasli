@@ -254,7 +254,11 @@
               if(rec.pos>2&&!rec.done&&dur&&rec.pos<dur-2)e.target.seekTo(rec.pos,true);
             },
             onStateChange:e=>{
-              if(e.data===YT.PlayerState.ENDED){rec.watched=Math.max(rec.watched||0,(e.target.getDuration()||0));markDone();commit();paint();}
+              if(e.data===YT.PlayerState.ENDED){
+                const dur=e.target.getDuration()||0;
+                if(!rec.done&&dur&&(rec.watched||0)>=dur*0.9){markDone();}
+                commit();paint();
+              }
               if(e.data===YT.PlayerState.PLAYING)lastT=e.target.getCurrentTime();
             }
           }});
@@ -263,7 +267,7 @@
             if(player.getPlayerState()===YT.PlayerState.PLAYING){
               const ct=player.getCurrentTime(), d=ct-lastT; lastT=ct;
               const dur=player.getDuration()||0;
-              if(!rec.done&&dur&&d>0&&d<1.5){
+              if(!rec.done&&dur&&d>0&&d<=2.1){
                 rec.watched=Math.min(dur,(rec.watched||0)+d);
                 rec.pct=rec.watched/dur*100;
                 if(rec.pct>=90)markDone();
@@ -288,7 +292,7 @@
         });
         video.addEventListener('timeupdate',()=>{
           const ct=video.currentTime, d=ct-lastT; lastT=ct;
-          if(!rec.done&&video.duration&&d>0&&d<1.5){
+          if(!rec.done&&video.duration&&d>0&&d<=2.1){
             rec.watched=Math.min(video.duration,(rec.watched||0)+d);
             rec.pct=rec.watched/video.duration*100;
             if(rec.pct>=90)markDone();
@@ -297,7 +301,7 @@
           paint();throttled();
         });
         video.addEventListener('pause',()=>{commit();paint()});
-        video.addEventListener('ended',()=>{rec.pos=0;markDone();commit();paint()});
+        video.addEventListener('ended',()=>{rec.pos=0;if(!rec.done&&video.duration&&(rec.watched||0)>=video.duration*0.9)markDone();commit();paint()});
         paint();
       }
     },
