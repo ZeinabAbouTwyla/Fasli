@@ -248,7 +248,7 @@
       }else if(l.yt){
         // مشغّل يوتيوب مضمّن + قياس وقت التشغيل الفعلي كل ثانية
         const start=()=>{
-          const player=new YT.Player('yt-mount',{videoId:l.yt,playerVars:{rel:0,modestbranding:1},events:{
+          const player=new YT.Player('yt-mount',{videoId:l.yt,playerVars:{rel:0,modestbranding:1,enablejsapi:1},events:{
             onReady:e=>{
               const dur=e.target.getDuration()||0;
               if(rec.pos>2&&!rec.done&&dur&&rec.pos<dur-2)e.target.seekTo(rec.pos,true);
@@ -262,6 +262,7 @@
               if(e.data===YT.PlayerState.PLAYING)lastT=e.target.getCurrentTime();
             }
           }});
+          window.FasliPlayer=player;
           setInterval(()=>{
             if(!player||!player.getPlayerState)return;
             if(player.getPlayerState()===YT.PlayerState.PLAYING){
