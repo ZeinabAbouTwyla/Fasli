@@ -40,16 +40,18 @@ window.FASLI = (function(){
       {id:'arabic', ar:'اللغة العربية', en:'Arabic', cover:covers.fractions, lessons:'arabic'}
     ]
   };
-  // بنك دروس لكل مادة؛ الفيديو التجريبي الحقيقي في أول درس رياضيات
+  // بنك دروس لكل مادة. الدروس التي لها فيديو حقيقي تحمل yt (معرّف يوتيوب) وvsrc (اسم المصدر)،
+  // وتُعرض داخل مشغّل مضمّن مع نسب المصدر تحته. الدروس بلا فيديو تظهر بحالة «قريبًا»
+  // ولا تدخل في حساب الإنجاز أو قفل التتابع حتى يُضاف محتواها.
   const lessonBank = {
     math:[
-      {id:'m-l1', ar:'المعادلات من الدرجة الأولى', en:'First-degree equations', dur:'00:14', video:'assets/video/lesson-sample.mp4', poster:'assets/img/video-poster.jpg',
+      {id:'m-l1', ar:'المعادلات من الدرجة الأولى', en:'First-degree equations', dur:'16:46', yt:'4YF5_6TvraE', vsrc:'رياضيات للجميع (Mathematics For All)', poster:'assets/img/video-poster.jpg',
        notesAr:['مفهوم المعادلة والمتغير','خطوات حل معادلة من الدرجة الأولى','التحقق من صحة الحل'],
        notesEn:['What an equation and a variable are','Steps to solve a first-degree equation','Checking your solution']},
-      {id:'m-l2', ar:'الميزان الجبري وحل المعادلات', en:'The algebra balance', dur:'9:15', poster:'assets/img/lesson-algebra.jpg'},
-      {id:'m-l3', ar:'الهندسة: محيط الدائرة ومساحتها', en:'Geometry: circle perimeter and area', dur:'11:05', poster:'assets/img/lesson-geometry.jpg'},
-      {id:'m-l4', ar:'الإحصاء: الوسط والوسيط', en:'Statistics: mean and median', dur:'8:50', poster:'assets/img/lesson-stats.jpg'},
-      {id:'m-l5', ar:'جمع الكسور وطرحها', en:'Adding and subtracting fractions', dur:'10:20', poster:'assets/img/lesson-fractions.jpg'}
+      {id:'m-l2', ar:'الميزان الجبري وحل المعادلات', en:'The algebra balance', dur:'8:10', yt:'yXkx4jVYjkQ', vsrc:'إيهاب روماني (ehab romany)', poster:'assets/img/lesson-algebra.jpg'},
+      {id:'m-l3', ar:'الهندسة: محيط الدائرة ومساحتها', en:'Geometry: circle perimeter and area', dur:'4:53', yt:'DPKHaW9HX-w', vsrc:'قناة nouha', poster:'assets/img/lesson-geometry.jpg'},
+      {id:'m-l4', ar:'الإحصاء: الوسط والوسيط', en:'Statistics: mean and median', dur:'4:48', yt:'BK6zV3aeyx0', vsrc:'منصة مدرسة (Madrasa)', poster:'assets/img/lesson-stats.jpg'},
+      {id:'m-l5', ar:'جمع الكسور وطرحها', en:'Adding and subtracting fractions', dur:'3:12', yt:'ObhiYCoODxM', vsrc:'Math Challenge Hub', poster:'assets/img/lesson-fractions.jpg'}
     ],
     arabic:[
       {id:'a-l1', ar:'الجملة الاسمية والجملة الفعلية', en:'Nominal and verbal sentences', dur:'9:30'},
